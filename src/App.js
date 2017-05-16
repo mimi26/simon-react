@@ -6,12 +6,13 @@ class App extends Component {
     super();
     this.state = {
       roundNum: 0,
-      message: ""
+      message: "",
+      shownColors: []
     }
   }
 
   handleStartClick = () => {
-      //this.play();
+      this.play();
       if (this.state.roundNum === 0) {
       this.setState({ message:  "Click on colors to repeat the sequence shown"});
     } else if (this.state.roundNum > 0) {
@@ -19,8 +20,16 @@ class App extends Component {
     }
   }
 
-  renderMessage = () => {
-    
+  play = () => {
+    const colors = ['red', 'yellow', 'blue', 'green'];
+    //creates a random number between 0 and 3 picks a color corresponding
+    //to number from colors array and pushes it into shown array. 
+    let randColor = Math.floor((Math.random() * colors.length));
+    this.setState({shownColors: this.state.shownColors.concat([colors[randColor]])});
+    //delay before sequence is shown to player.
+    //setTimeout(blinkSequence, 1000);
+    //call the function that records player's response clicks.
+    //this.pushResponse();
   }
 
   render() {
