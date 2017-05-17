@@ -25,7 +25,9 @@ class App extends Component {
     //creates a random number between 0 and 3 picks a color corresponding
     //to number from colors array and pushes it into shown array. 
     let randColor = Math.floor((Math.random() * colors.length));
-    this.setState({shownColors: this.state.shownColors.concat([colors[randColor]])});
+    const shownColors = [ ...this.state.shownColors ];
+    shownColors.push(colors[randColor]);
+    this.setState({ shownColors });
     //delay before sequence is shown to player.
     //setTimeout(blinkSequence, 1000);
     //call the function that records player's response clicks.
