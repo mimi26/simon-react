@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class App extends Component {
   constructor() {
@@ -9,6 +10,18 @@ class App extends Component {
       message: "",
       shownColors: []
     }
+  }
+
+  componentDidMount() {
+    
+    this.refs.redDiv.addEventListener('click', this.blink);
+    this.refs.blueDiv.addEventListener('click', this.blink);
+    this.refs.greenDiv.addEventListener('click', this.blink);
+    this.refs.yellowDiv.addEventListener('click', this.blink);
+  }
+
+  blink = () => {
+    console.log('blink');
   }
 
   handleStartClick = () => {
@@ -34,16 +47,22 @@ class App extends Component {
     //this.pushResponse();
   }
 
+  blinkRed = () => {
+
+  }
+
   render() {
     return (
+      
       <div className="App">
         <h1>Simon</h1>
         <div className="message">{this.state.message}</div>
         <div id="board">
-          <div className="color" id="red"></div>
-          <div className="color" id="blue"></div>
-          <div className="color" id="green"></div>
-          <div className="color" id="yellow"></div>
+           
+          <div ref="redDiv" className="color" id="red"></div>
+          <div ref="blueDiv" className="color" id="blue"></div>
+          <div ref="greenDiv" className="color" id="green"></div>
+          <div ref="yellowDiv" className="color" id="yellow"></div>
         </div>
         <div id="score">Score: </div>
         <button id="start"
