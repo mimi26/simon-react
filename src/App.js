@@ -11,7 +11,8 @@ class App extends Component {
       redClicked: false,
       blueClicked: false,
       greenClicked: false,
-      yellowClicked: false
+      yellowClicked: false,
+      inProgress: false
     }
   }
 
@@ -52,7 +53,9 @@ class App extends Component {
   }
 
   handleStartClick = () => {
+    if (this.state.inProgress === false) { 
       this.play();
+    }
       if (this.state.roundNum === 0) {
       this.setState({ message:  "Click on colors to repeat the sequence shown"});
     } else if (this.state.roundNum > 0) {
@@ -61,6 +64,7 @@ class App extends Component {
   }
 
   play = () => {
+    this.setState({ inProgress: true });
     const colors = ['red', 'yellow', 'blue', 'green'];
     //creates a random number between 0 and 3 picks a color corresponding
     //to number from colors array and pushes it into shown array. 
@@ -69,10 +73,45 @@ class App extends Component {
     shownColors.push(colors[randColor]);
     this.setState({ shownColors });
     //delay before sequence is shown to player.
-    //setTimeout(blinkSequence, 1000);
+    setTimeout(this.blinkSequence, 1000);
     //call the function that records player's response clicks.
     //this.pushResponse();
   }
+
+   blinkSequence = () => {
+    for (let i = 0; i < this.state.shownColors.length; i ++) {
+      if (this.state.shownColors[i] === 'red') {
+        setTimeout(() => {
+          this.setState({ redClicked: true });
+          setTimeout(()=> {
+            this.setState({ redClicked: false });
+          }, 400);
+        }, i * 800);
+      } else if (this.state.shownColors[i] === 'blue') {
+        setTimeout(() => {
+          this.setState({ blueClicked: true });
+          setTimeout(() => {
+            this.setState({ blueClicked: false });
+          }, 400);
+        }, i * 800);
+      } else if (this.state.shownColors[i] === 'green') {
+        setTimeout(() => {
+          this.setState({ greenClicked: true });
+          setTimeout(() => {
+            this.setState({ greenClicked: false });
+          }, 400);
+        }, i * 800);
+      } else if (this.state.shownColors[i] === 'yellow') {
+        setTimeout(() => {
+          this.setState({ yellowClicked: true });
+          setTimeout(() => {
+            this.setState({ yellowClicked: false });
+          }, 400);
+        }, i * 800);
+      } 
+    }
+  }
+
 
   render() {
     let redLit = this.state.redClicked ? 'red-lit' : 'color';
