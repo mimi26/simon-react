@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class App extends Component {
   constructor() {
@@ -15,14 +14,6 @@ class App extends Component {
       yellowClicked: false
     }
   }
-
-  // componentDidMount() {
-    
-  //   this.refs.redDiv.addEventListener('click', this.blink);
-  //   this.refs.blueDiv.addEventListener('click', this.blink);
-  //   this.refs.greenDiv.addEventListener('click', this.blink);
-  //   this.refs.yellowDiv.addEventListener('click', this.blink);
-  // }
 
   handleRedClick = () => {
     setTimeout(() => {
@@ -60,9 +51,6 @@ class App extends Component {
     }, 600);    
   }
 
-
-
-
   handleStartClick = () => {
       this.play();
       if (this.state.roundNum === 0) {
@@ -96,10 +84,10 @@ class App extends Component {
         <h1>Simon</h1>
         <div className="message">{this.state.message}</div>
         <div id="board">
-          <div ref="redDiv" className="color" className={redLit} id="red" onClick={this.handleRedClick}></div>
-          <div ref="blueDiv" className="color" className={blueLit} id="blue" onClick={this.handleBlueClick}></div>
-          <div ref="greenDiv" className="color" className={greenLit} id="green" onClick={this.handleGreenClick}></div>
-          <div ref="yellowDiv" className="color" className={yellowLit} id="yellow" onClick={this.handleYellowClick}></div>
+          <div ref="redDiv" className={`${redLit} "color"`} id="red" onClick={this.handleRedClick}></div>
+          <div ref="blueDiv" className={`${blueLit} "color"`} id="blue" onClick={this.handleBlueClick}></div>
+          <div ref="greenDiv" className={`${greenLit} "color"`} id="green" onClick={this.handleGreenClick}></div>
+          <div ref="yellowDiv" className={`${yellowLit} "color"`} id="yellow" onClick={this.handleYellowClick}></div>
         </div>
         <div id="score">Score: </div>
         <button id="start"
