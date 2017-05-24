@@ -8,21 +8,60 @@ class App extends Component {
     this.state = {
       roundNum: 0,
       message: "",
-      shownColors: []
+      shownColors: [],
+      redClicked: false,
+      blueClicked: false,
+      greenClicked: false,
+      yellowClicked: false
     }
   }
 
-  componentDidMount() {
+  // componentDidMount() {
     
-    this.refs.redDiv.addEventListener('click', this.blink);
-    this.refs.blueDiv.addEventListener('click', this.blink);
-    this.refs.greenDiv.addEventListener('click', this.blink);
-    this.refs.yellowDiv.addEventListener('click', this.blink);
+  //   this.refs.redDiv.addEventListener('click', this.blink);
+  //   this.refs.blueDiv.addEventListener('click', this.blink);
+  //   this.refs.greenDiv.addEventListener('click', this.blink);
+  //   this.refs.yellowDiv.addEventListener('click', this.blink);
+  // }
+
+  handleRedClick = () => {
+    setTimeout(() => {
+      this.setState({ redClicked: true });
+    }, 200);
+    setTimeout( () => {
+      this.setState({ redClicked: false });
+    }, 600);    
   }
 
-  blink = () => {
-    console.log('blink');
+  handleBlueClick = () => {
+    setTimeout(() => {
+      this.setState({ blueClicked: true });
+    }, 200);
+    setTimeout( () => {
+      this.setState({ blueClicked: false });
+    }, 600);    
   }
+
+  handleGreenClick = () => {
+    setTimeout(() => {
+      this.setState({ greenClicked: true });
+    }, 200);
+    setTimeout( () => {
+      this.setState({ greenClicked: false });
+    }, 600);    
+  }
+
+  handleYellowClick = () => {
+    setTimeout(() => {
+      this.setState({ yellowClicked: true });
+    }, 200);
+    setTimeout( () => {
+      this.setState({ yellowClicked: false });
+    }, 600);    
+  }
+
+
+
 
   handleStartClick = () => {
       this.play();
@@ -47,22 +86,20 @@ class App extends Component {
     //this.pushResponse();
   }
 
-  blinkRed = () => {
-
-  }
-
   render() {
+    let redLit = this.state.redClicked ? 'red-lit' : 'color';
+    let blueLit = this.state.blueClicked ? 'blue-lit' : 'color';
+    let greenLit = this.state.greenClicked ? 'green-lit' : 'color';
+    let yellowLit = this.state.yellowClicked ? 'yellow-lit' : 'color';
     return (
-      
       <div className="App">
         <h1>Simon</h1>
         <div className="message">{this.state.message}</div>
         <div id="board">
-           
-          <div ref="redDiv" className="color" id="red"></div>
-          <div ref="blueDiv" className="color" id="blue"></div>
-          <div ref="greenDiv" className="color" id="green"></div>
-          <div ref="yellowDiv" className="color" id="yellow"></div>
+          <div ref="redDiv" className="color" className={redLit} id="red" onClick={this.handleRedClick}></div>
+          <div ref="blueDiv" className="color" className={blueLit} id="blue" onClick={this.handleBlueClick}></div>
+          <div ref="greenDiv" className="color" className={greenLit} id="green" onClick={this.handleGreenClick}></div>
+          <div ref="yellowDiv" className="color" className={yellowLit} id="yellow" onClick={this.handleYellowClick}></div>
         </div>
         <div id="score">Score: </div>
         <button id="start"
