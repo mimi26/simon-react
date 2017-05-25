@@ -8,11 +8,15 @@ class App extends Component {
       roundNum: 0,
       message: "",
       shownColors: [],
+      clickedColors: [],
       redClicked: false,
       blueClicked: false,
       greenClicked: false,
       yellowClicked: false,
-      inProgress: false
+      inProgress: false,
+      userSuccess: null,
+      userClicks: 0,
+      score: null
     }
   }
 
@@ -22,7 +26,14 @@ class App extends Component {
     }, 200);
     setTimeout( () => {
       this.setState({ redClicked: false });
-    }, 600);    
+    }, 600);   
+    const clickedColors = [ ...this.state.clickedColors ];
+    clickedColors.push('red');
+    let userClicks = this.state.userClicks + 1;
+    this.setState({ clickedColors, userClicks }); 
+    setTimeout(() => {
+      this.checkResponse();
+    }, 100);
   }
 
   handleBlueClick = () => {
@@ -31,7 +42,14 @@ class App extends Component {
     }, 200);
     setTimeout( () => {
       this.setState({ blueClicked: false });
-    }, 600);    
+    }, 600);  
+    const clickedColors = [ ...this.state.clickedColors ];
+    clickedColors.push('blue');
+    let userClicks = this.state.userClicks + 1;
+    this.setState({ clickedColors, userClicks });  
+    setTimeout(() => {
+      this.checkResponse();
+    }, 100);
   }
 
   handleGreenClick = () => {
@@ -40,7 +58,14 @@ class App extends Component {
     }, 200);
     setTimeout( () => {
       this.setState({ greenClicked: false });
-    }, 600);    
+    }, 600);  
+    const clickedColors = [ ...this.state.clickedColors ];
+    clickedColors.push('green');
+    let userClicks = this.state.userClicks + 1;
+    this.setState({ clickedColors, userClicks }); 
+    setTimeout(() => {
+      this.checkResponse();
+    }, 100);  
   }
 
   handleYellowClick = () => {
@@ -49,7 +74,14 @@ class App extends Component {
     }, 200);
     setTimeout( () => {
       this.setState({ yellowClicked: false });
-    }, 600);    
+    }, 600);  
+    const clickedColors = [ ...this.state.clickedColors ];
+    clickedColors.push('yellow');
+    let userClicks = this.state.userClicks + 1;
+    this.setState({ clickedColors, userClicks }); 
+    setTimeout(() => {
+      this.checkResponse();
+    }, 100); 
   }
 
   handleStartClick = () => {
@@ -112,6 +144,38 @@ class App extends Component {
     }
   }
 
+checkResponse = () => {
+  for (let i = 0; i < this.state.shownColors.length; i++) {
+    if (this.state.shownColors[i] === this.state.clickedColors[i]) {
+      console.log(this.state.shownColors[i]);
+      console.log(this.state.clickedColors[i]);
+      this.setState({ userSuccess: true });
+      console.log('user success')
+    } else if (this.state.shownColors[i] !== this.state.clickedColors[i]) {
+      console.log(this.state.shownColors[i]);
+      console.log(this.state.clickedColors[i]);
+      this.setState({ 
+        message: 'Game Over',
+        userSuccess: false,
+        roundNum: 0,
+        shownColors: [],
+        clickedColors: []
+      });
+
+      console.log('user fail')
+    }
+  }
+  if (this.state.userSuccess === true && this.state.userClicks === this.state.shownColors.length) {
+    console.log('correct');
+    this.setState({
+      roundNum: this.state.roundNum + 1,
+      score: this.state.roundNum,
+      clickedColors: [],
+      userClicks: 0
+    });
+    this.play();
+  }
+}
 
   render() {
     let redLit = this.state.redClicked ? 'red-lit' : 'color';
@@ -128,7 +192,7 @@ class App extends Component {
           <div ref="greenDiv" className={`${greenLit} "color"`} id="green" onClick={this.handleGreenClick}></div>
           <div ref="yellowDiv" className={`${yellowLit} "color"`} id="yellow" onClick={this.handleYellowClick}></div>
         </div>
-        <div id="score">Score: </div>
+        <div id="score">Score: {this.state.score}</div>
         <button id="start"
                 onClick={this.handleStartClick}>
                   Start
