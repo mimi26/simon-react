@@ -6,7 +6,7 @@ class App extends Component {
     super();
     this.state = {
       roundNum: 1,
-      message: "",
+      message: "Click Start To Begin",
       shownColors: [],
       clickedColors: [],
       redClicked: false,
@@ -174,19 +174,19 @@ checkResponse = () => {
 }
 
   render() {
-    let redLit = this.state.redClicked ? 'red-lit' : 'color';
-    let blueLit = this.state.blueClicked ? 'blue-lit' : 'color';
-    let greenLit = this.state.greenClicked ? 'green-lit' : 'color';
-    let yellowLit = this.state.yellowClicked ? 'yellow-lit' : 'color';
+    let redLit = this.state.redClicked ? 'red-lit color' : 'red color';
+    let blueLit = this.state.blueClicked ? 'blue-lit color' : 'blue color';
+    let greenLit = this.state.greenClicked ? 'green-lit color' : 'green color';
+    let yellowLit = this.state.yellowClicked ? 'yellow-lit color' : 'yellow color';
     return (
       <div className="App">
         <h1>Simon</h1>
         <div className="message">{this.state.message}</div>
         <div id="board">
-          <div ref="redDiv" className={`${redLit} "color"`} id="red" onClick={this.handleRedClick}></div>
-          <div ref="blueDiv" className={`${blueLit} "color"`} id="blue" onClick={this.handleBlueClick}></div>
-          <div ref="greenDiv" className={`${greenLit} "color"`} id="green" onClick={this.handleGreenClick}></div>
-          <div ref="yellowDiv" className={`${yellowLit} "color"`} id="yellow" onClick={this.handleYellowClick}></div>
+          <div className={redLit} onClick={this.handleRedClick}></div>
+          <div className={blueLit} onClick={this.handleBlueClick}></div>
+          <div className={greenLit} onClick={this.handleGreenClick}></div>
+          <div className={yellowLit} onClick={this.handleYellowClick}></div>
         </div>
         <div id="score">Score: {this.state.score}</div>
         <button id="start"

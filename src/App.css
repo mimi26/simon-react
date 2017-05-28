@@ -18,45 +18,42 @@ h1 {
   border-radius: 5% ;
 }
 
-#red {
+.red {
   background: rgba(255,0,0,.6);
   transition: border 1s;
 }
 
 .red-lit {
-  background-color:  rgba(255,0,0,1) !important;
-  border: 10px solid white !important;
+  background: rgba(255, 0, 0, 1);
+  border: 10px solid white;
 }
 
 
-#blue {
-
- background-color: rgba(0, 0, 255, .6);
+.blue {
+  background-color: rgba(0, 0, 255, .6);
   right: 0;
   transition: border 1s;
 }
 
 .blue-lit {
-
- background: rgba(0, 0, 255, 1) !important;
- border: 10px solid white !important;
+  background: rgba(0, 0, 255, 1);
+  border: 10px solid white;
+  right: 0;
 }
 
-#green {
-
+.green {
   background: rgba(0, 255, 0, .6);
   bottom: 0;
   transition: border 1s;
 }
 
 .green-lit {
-
-  background: rgba(0, 255, 0, 1) !important;
-  border: 10px solid white !important;
+  background: rgba(0, 255, 0, 1);
+  border: 10px solid white;
+  bottom: 0;
 }
 
-#yellow {
-  /*background: #ffee11;*/
+.yellow {
   background: rgba(255, 250, 0, .7);
   right: 0;
   bottom: 0;
@@ -64,13 +61,14 @@ h1 {
 }
 
 .yellow-lit {
-
-  background: rgba(255, 255, 0, 1) !important;
-  border: 10px solid white !important;
+  background: rgba(255, 255, 0, 1);
+  border: 10px solid white;
+  right: 0;
+  bottom: 0;
 }
 
 #board {
-  margin: 0 auto 10% auto;
+  margin: 29% auto 10% auto;
   position: relative;
   height: 60%;
   width: 30%;
