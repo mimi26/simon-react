@@ -89,7 +89,10 @@ class App extends Component {
       this.play();
     }
       if (this.state.roundNum === 1) {
-      this.setState({ message:  "Click on colors to repeat the sequence shown"});
+      this.setState({ 
+        message:  "Click on colors to repeat the sequence shown",
+        score: null
+      });
     } else if (this.state.roundNum > 1) {
       this.setState({ message: "Game in progress" });
     }
@@ -149,12 +152,13 @@ checkResponse = () => {
       this.setState({ userSuccess: true });
     } else if (clickedColors[i] !== shownColors[i]) {
       this.setState({ 
-        message: 'Game Over',
+        message: 'Game Over. Click Start to Play Again',
         userSuccess: false,
-        roundNum: 0,
+        roundNum: 1,
         shownColors: [],
         clickedColors: [],
-        inProgress: false
+        inProgress: false,
+        userClicks: 0
       });
     }
   }
