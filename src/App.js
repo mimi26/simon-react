@@ -88,9 +88,9 @@ class App extends Component {
     if (this.state.inProgress === false) { 
       this.play();
     }
-      if (this.state.roundNum === 0) {
+      if (this.state.roundNum === 1) {
       this.setState({ message:  "Click on colors to repeat the sequence shown"});
-    } else if (this.state.roundNum > 0) {
+    } else if (this.state.roundNum > 1) {
       this.setState({ message: "Game in progress" });
     }
   }
@@ -143,26 +143,25 @@ class App extends Component {
   }
 
 checkResponse = () => {
-  let { shownColors, clickedColors } = this.state;
-  //let clickedColors = this.state.clickedColors;
-  for (let i = 0; i < this.state.shownColors.length; i++) {
-    if (shownColors[i] === clickedColors[i]) {
+  let { shownColors, clickedColors, userClicks, roundNum } = this.state;
+  for (let i = 0; i < clickedColors.length; i++) {
+    if (clickedColors[i] === shownColors[i]) {
       this.setState({ userSuccess: true });
-    } else if (shownColors[i] !== clickedColors[i] && clickedColors.length === shownColors.length) {
+    } else if (clickedColors[i] !== shownColors[i]) {
       this.setState({ 
         message: 'Game Over',
         userSuccess: false,
         roundNum: 0,
         shownColors: [],
-        clickedColors: []
+        clickedColors: [],
+        inProgress: false
       });
     }
   }
-  if (this.state.userSuccess === true && this.state.userClicks === shownColors.length) {
-    console.log('correct');
+  if (this.state.userSuccess === true && userClicks === shownColors.length) {
     this.setState({
-      roundNum: this.state.roundNum + 1,
-      score: this.state.roundNum,
+      roundNum: roundNum + 1,
+      score: roundNum,
       clickedColors: [],
       userClicks: 0
     });
