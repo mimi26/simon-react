@@ -5,7 +5,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      roundNum: 0,
+      roundNum: 1,
       message: "",
       shownColors: [],
       clickedColors: [],
@@ -106,8 +106,6 @@ class App extends Component {
     this.setState({ shownColors });
     //delay before sequence is shown to player.
     setTimeout(this.blinkSequence, 1000);
-    //call the function that records player's response clicks.
-    //this.pushResponse();
   }
 
    blinkSequence = () => {
@@ -145,15 +143,12 @@ class App extends Component {
   }
 
 checkResponse = () => {
+  let { shownColors, clickedColors } = this.state;
+  //let clickedColors = this.state.clickedColors;
   for (let i = 0; i < this.state.shownColors.length; i++) {
-    if (this.state.shownColors[i] === this.state.clickedColors[i]) {
-      console.log(this.state.shownColors[i]);
-      console.log(this.state.clickedColors[i]);
+    if (shownColors[i] === clickedColors[i]) {
       this.setState({ userSuccess: true });
-      console.log('user success')
-    } else if (this.state.shownColors[i] !== this.state.clickedColors[i]) {
-      console.log(this.state.shownColors[i]);
-      console.log(this.state.clickedColors[i]);
+    } else if (shownColors[i] !== clickedColors[i] && clickedColors.length === shownColors.length) {
       this.setState({ 
         message: 'Game Over',
         userSuccess: false,
@@ -161,11 +156,9 @@ checkResponse = () => {
         shownColors: [],
         clickedColors: []
       });
-
-      console.log('user fail')
     }
   }
-  if (this.state.userSuccess === true && this.state.userClicks === this.state.shownColors.length) {
+  if (this.state.userSuccess === true && this.state.userClicks === shownColors.length) {
     console.log('correct');
     this.setState({
       roundNum: this.state.roundNum + 1,
