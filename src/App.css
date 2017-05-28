@@ -12,10 +12,10 @@ h1 {
 }
 .color {
   height: 8em;
-  width: 47%;
+  width: 10em;
+  margin: 5px 10px;
   border: 3px solid white;
-  position: absolute;
-  border-radius: 5% ;
+  border-radius: 5%;
 }
 
 .red {
@@ -31,45 +31,37 @@ h1 {
 
 .blue {
   background-color: rgba(0, 0, 255, .6);
-  right: 0;
   transition: border 1s;
 }
 
 .blue-lit {
   background: rgba(0, 0, 255, 1);
   border: 10px solid white;
-  right: 0;
 }
 
 .green {
   background: rgba(0, 255, 0, .6);
-  bottom: 0;
   transition: border 1s;
 }
 
 .green-lit {
   background: rgba(0, 255, 0, 1);
   border: 10px solid white;
-  bottom: 0;
 }
 
 .yellow {
   background: rgba(255, 250, 0, .7);
-  right: 0;
-  bottom: 0;
   transition: border 1s;
 }
 
 .yellow-lit {
   background: rgba(255, 255, 0, 1);
   border: 10px solid white;
-  right: 0;
-  bottom: 0;
 }
 
 #board {
-  margin: 29% auto 10% auto;
-  position: relative;
+  margin: 0 auto 10% auto;
+  display: flex;
   height: 60%;
   width: 30%;
 
@@ -92,11 +84,9 @@ h1 {
   color: white;
   height: 90px;
   width: 43%;
-  /*border: 2px solid white;
-  border-radius: 10%;*/
   text-align: center;
   margin: 0 auto 4% auto;
-  line-height: 90px;
+  line-height: 70px;
   font-size: 26px;
   font-family: 'Gloria Hallelujah', cursive;
 

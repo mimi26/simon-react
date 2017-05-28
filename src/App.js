@@ -183,10 +183,14 @@ checkResponse = () => {
         <h1>Simon</h1>
         <div className="message">{this.state.message}</div>
         <div id="board">
-          <div className={redLit} onClick={this.handleRedClick}></div>
-          <div className={blueLit} onClick={this.handleBlueClick}></div>
-          <div className={greenLit} onClick={this.handleGreenClick}></div>
-          <div className={yellowLit} onClick={this.handleYellowClick}></div>
+          <div className="top-row">
+            <div className={redLit} onClick={this.handleRedClick}></div>
+            <div className={blueLit} onClick={this.handleBlueClick}></div>
+          </div>
+          <div className="bottom-row">
+            <div className={greenLit} onClick={this.handleGreenClick}></div>
+            <div className={yellowLit} onClick={this.handleYellowClick}></div>
+          </div>
         </div>
         <div id="score">Score: {this.state.score}</div>
         <button id="start"
