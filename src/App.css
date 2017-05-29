@@ -3,6 +3,7 @@ body, html, main {
   width: 100%;
   background-color: black;
 }
+
 h1 {
   color: white;
   text-align: center;
@@ -10,61 +11,76 @@ h1 {
   font-size: 50px;
   font-family: 'Cherry Cream Soda', cursive;
 }
+
 .color {
-  height: 8em;
-  width: 10em;
-  margin: 5px 10px;
+  height: 30vh;
+  width: 15vw;
   border: 3px solid white;
   border-radius: 5%;
+  position: absolute;
 }
 
 .red {
   background: rgba(255,0,0,.6);
   transition: border 1s;
+  left: -1em;
+  top: 1.2em;
 }
 
 .red-lit {
   background: rgba(255, 0, 0, 1);
   border: 10px solid white;
+  left: -1em;
+  top: 1.2em;
 }
-
 
 .blue {
   background-color: rgba(0, 0, 255, .6);
   transition: border 1s;
+  right: -1em;
+  top: 1.2em;
 }
 
 .blue-lit {
   background: rgba(0, 0, 255, 1);
   border: 10px solid white;
+  right: -1em;
+  top: 1.2em;
 }
 
 .green {
   background: rgba(0, 255, 0, .6);
   transition: border 1s;
+  bottom: 0;
+  left: -1em;
 }
 
 .green-lit {
   background: rgba(0, 255, 0, 1);
   border: 10px solid white;
+  bottom: 0;
+  left: -1em;
 }
 
 .yellow {
   background: rgba(255, 250, 0, .7);
   transition: border 1s;
+  right: -1em;
+  bottom: 0;
 }
 
 .yellow-lit {
   background: rgba(255, 255, 0, 1);
   border: 10px solid white;
+  right: -1em;
+  bottom: 0;
 }
 
 #board {
-  margin: 0 auto 10% auto;
-  display: flex;
+  margin: 15em auto 10em auto;
   height: 60%;
   width: 30%;
-
+  position: relative;
 }
 
 #start {
@@ -77,7 +93,6 @@ h1 {
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 18px;
   line-height: 5%;
-
 }
 
 .message {
@@ -86,10 +101,8 @@ h1 {
   width: 43%;
   text-align: center;
   margin: 0 auto 4% auto;
-  line-height: 70px;
   font-size: 26px;
   font-family: 'Gloria Hallelujah', cursive;
-
 }
 
 #score {
@@ -99,5 +112,4 @@ h1 {
   top: 20%;
   border-bottom: 1px solid white;
   font-family: 'Gloria Hallelujah', cursive;
-
 }
