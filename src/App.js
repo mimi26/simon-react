@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   handleRedClick = () => {
+    this.playsound();
     setTimeout(() => {
       this.setState({ redClicked: true });
     }, 200);
@@ -37,6 +38,7 @@ class App extends Component {
   }
 
   handleBlueClick = () => {
+    this.playsound();
     setTimeout(() => {
       this.setState({ blueClicked: true });
     }, 200);
@@ -53,6 +55,7 @@ class App extends Component {
   }
 
   handleGreenClick = () => {
+    this.playsound();
     setTimeout(() => {
       this.setState({ greenClicked: true });
     }, 200);
@@ -69,6 +72,7 @@ class App extends Component {
   }
 
   handleYellowClick = () => {
+    this.playsound();
     setTimeout(() => {
       this.setState({ yellowClicked: true });
     }, 200);
@@ -173,6 +177,12 @@ checkResponse = () => {
   }
 }
 
+  playsound = () => {
+      this.refs.audio.play();
+      console.log('beep');
+  }
+
+
   render() {
     let redLit = this.state.redClicked ? 'red-lit color' : 'red color';
     let blueLit = this.state.blueClicked ? 'blue-lit color' : 'blue color';
@@ -197,6 +207,9 @@ checkResponse = () => {
                 onClick={this.handleStartClick}>
                   Start
         </button>
+        <audio ref="audio" >
+          <source src="../sounds/simonSound1.mp3" type="audio/mpeg"></source>
+        </audio>
       </div>
     );
   }
