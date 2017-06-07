@@ -89,6 +89,7 @@ class App extends Component {
   }
 
   handleStartClick = () => {
+    this.refs.audioThree.play();
     if (this.state.inProgress === false) { 
       this.play();
     }
@@ -120,6 +121,7 @@ class App extends Component {
       if (this.state.shownColors[i] === 'red') {
         setTimeout(() => {
           this.setState({ redClicked: true });
+          this.refs.audioTwo.play();
           setTimeout(()=> {
             this.setState({ redClicked: false });
           }, 400);
@@ -127,6 +129,7 @@ class App extends Component {
       } else if (this.state.shownColors[i] === 'blue') {
         setTimeout(() => {
           this.setState({ blueClicked: true });
+          this.refs.audioTwo.play();
           setTimeout(() => {
             this.setState({ blueClicked: false });
           }, 400);
@@ -134,6 +137,7 @@ class App extends Component {
       } else if (this.state.shownColors[i] === 'green') {
         setTimeout(() => {
           this.setState({ greenClicked: true });
+          this.refs.audioTwo.play();
           setTimeout(() => {
             this.setState({ greenClicked: false });
           }, 400);
@@ -141,6 +145,7 @@ class App extends Component {
       } else if (this.state.shownColors[i] === 'yellow') {
         setTimeout(() => {
           this.setState({ yellowClicked: true });
+          this.refs.audioTwo.play();
           setTimeout(() => {
             this.setState({ yellowClicked: false });
           }, 400);
@@ -178,8 +183,7 @@ checkResponse = () => {
 }
 
   playsound = () => {
-      this.refs.audio.play();
-      console.log('beep');
+      this.refs.audioOne.play();
   }
 
 
@@ -207,8 +211,14 @@ checkResponse = () => {
                 onClick={this.handleStartClick}>
                   Start
         </button>
-        <audio ref="audio" >
+        <audio ref="audioOne" >
           <source src="../sounds/simonSound1.mp3" type="audio/mpeg"></source>
+        </audio>
+        <audio ref="audioTwo" >
+          <source src="../sounds/simonSound2.mp3" type="audio/mpeg"></source>
+        </audio>
+        <audio ref="audioThree" >
+          <source src="../sounds/simonSound3.mp3" type="audio/mpeg"></source>
         </audio>
       </div>
     );
