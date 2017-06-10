@@ -2,6 +2,10 @@
 
 ![game screen shot](public/scrncap.png)
 
+## Linked to Deployed Version
+
+http://simonreact.bitballoon.com/
+
 ## Techologies Used
 
 HTML, CSS, JavaScript, React
@@ -17,3 +21,4 @@ Mimi Klein
 ## Future Additions
 
 I'd like to add sound effects for when the colors are clicked and light up. I'd also like to get the game to speed up as it goes on to make the game more challenging. 
+
